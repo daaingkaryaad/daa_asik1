@@ -46,41 +46,50 @@ All algorithms are instrumented with `Metrics` (comparisons, recursion depth, ru
 #### Runtime vs Input Size
 ![MergeSort Runtime](images/mergesort_time.png)
 
-1. Input size (n) was varied from small (6) to larger (1000).
-2. Runtime grows roughly like Θ(n log n).
-3. For very small n, runtime is almost zero (cutoff → insertion sort).
+1. Input size (n) was varied from small (6) to larger (1000)
+2. Runtime grows roughly like Θ(n log n)
+3. For very small n, runtime is almost zero (cutoff → insertion sort)
 
 ### B. Deterministic Select Results
 
 #### Comparisons vs Input Size
 ![Select Comparisons](images/select_comparisons.png)
 
-1. For very small n (like 5), only ~4 comparisons are needed. 
-2. For n = 1000, ~2000 comparisons (≈ 2n), showing linear growth. 
-3. For n = 10000, ~20,000 comparisons, which matches Θ(n).
+1. For very small n (like 5), only ~4 comparisons are needed 
+2. For n = 1000, ~2000 comparisons (≈ 2n), showing linear growth 
+3. For n = 10000, ~20,000 comparisons, which matches Θ(n)
 
 ### C. QuickSort Results
 
 #### Runtime vs Input Size
 ![QuickSort Runtime](images/quicksort_time.png)
 
-1. For very small n, runtime is almost zero because the array is tiny.
-2. For n = 1000 and above, runtime grows close to Θ(n log n), as expected.
-3. Randomized pivot keeps recursion depth ≈ log₂(n), preventing worst-case behavior.
-4. Performance fluctuates slightly run-to-run, since pivot choice is randomized, but the average matches theory.
+1. For very small n, runtime is almost zero because the array is tiny
+2. For n = 1000 and above, runtime grows close to Θ(n log n), as expected
+3. Randomized pivot keeps recursion depth ≈ log₂(n), preventing worst-case behavior
+4. Performance fluctuates slightly run-to-run, since pivot choice is randomized, but the average matches theory
 
+### D. Closest Pair Results
+
+#### Recursion Depth vs Input Size
+![Closest Pair Recursion](images/closest_recursion.png)
+
+1. For very small n (like 3–5 points), recursion depth is almost zero
+2. As n grows (1000, 10000), recursion depth increases slowly, about O(log n), which matches the divide-and-conquer strategy
+3. Depth values stay modest even for large inputs, showing the algorithm remains efficient
+4. This confirms theory: Closest Pair recursion depth is logarithmic, similar to MergeSort
 
 ---
 
 ## 5.Summary
-1. Theory matches practice within constant factors. 
+1. Theory matches practice within constant factors
 2. Deterministic Select grows linearly, but `Arrays.sort` often faster for small n
-3. Closest Pair verified against O(n²) brute force for small n, matched outputs.
+3. Closest Pair verified against O(n²) brute force for small n, matched outputs
 
 ---
 
 ## 6.Git Workflow
-1. `main` → stable releases.
-2. `feature/*` branches for each algorithm.
-3. `bench/jmh` → benchmark harness.
-4. `docs/report` → this README.
+1. `main` → stable releases
+2. `feature/*` branches for each algorithm
+3. `bench/jmh` → benchmark harness
+4. `docs/report` → this README
