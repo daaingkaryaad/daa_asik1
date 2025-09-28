@@ -54,7 +54,7 @@ All algorithms are instrumented with `Metrics` (comparisons, recursion depth, ru
 
 ## 5.Summary
 1. Theory matches practice within constant factors. 
-2. Deterministic Select grows linearly, but `Arrays.sort` often faster for small n due to library optimizations.
+2. Deterministic Select grows linearly, but `Arrays.sort` often faster for small ngit add images/mergesort_time.png README.md
 3. Closest Pair verified against O(n²) brute force for small n, matched outputs.
 
 ---
