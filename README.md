@@ -1,4 +1,4 @@
-#DAA Assignment 1
+# DAA Assignment 1
 Initial project setup (Maven + JUnit5) looks like:
 
 ## 1.Implemented algorithms
