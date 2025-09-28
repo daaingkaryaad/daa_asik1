@@ -6,6 +6,13 @@ public final class DeterministicSelect {
     private DeterministicSelect() {}
 
     public static int select(int[] arr, int k) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+        if (k < 0 || k >= arr.length) {
+            throw new IllegalArgumentException("Invalid index: " + k);
+        }
+
         Metrics.reset();
         long start = System.nanoTime();
         int result = select(arr, 0, arr.length - 1, k);
@@ -43,7 +50,7 @@ public final class DeterministicSelect {
         int storeIndex = left;
         for (int i = left; i < right; i++) {
             Metrics.compare();
-            if (arr[i] < pivotValue) {
+            if (arr[i] <= pivotValue) { // <= allows duplicates
                 Util.swap(arr, storeIndex, i);
                 storeIndex++;
             }
@@ -54,14 +61,11 @@ public final class DeterministicSelect {
 
     private static int medianOfMedians(int[] arr, int left, int right) {
         int n = right - left + 1;
-
-        // if small, just return the median directly
         if (n <= 5) {
             Arrays.sort(arr, left, right + 1);
             return left + n / 2;
         }
 
-        // collect medians of groups of 5
         int numMedians = 0;
         for (int i = left; i <= right; i += 5) {
             int subRight = Math.min(i + 4, right);
@@ -71,7 +75,6 @@ public final class DeterministicSelect {
             numMedians++;
         }
 
-        // instead of recursive select, just sort the medians and return middle
         Arrays.sort(arr, left, left + numMedians);
         return left + numMedians / 2;
     }

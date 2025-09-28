@@ -13,6 +13,10 @@ public class ClosestPair {
     }
 
     public static double findClosest(Point[] points) {
+        if (points == null || points.length < 2) {
+            return Double.POSITIVE_INFINITY; // no valid pair
+        }
+
         Metrics.reset();
         long start = System.nanoTime();
 
@@ -43,9 +47,7 @@ public class ClosestPair {
         double dr = closestPair(px, pyr, mid + 1, right);
         double d = Math.min(dl, dr);
 
-        // Build strip of points within d of mid line
         Point[] strip = Arrays.stream(py).filter(p -> Math.abs(p.x - midPoint.x) < d).toArray(Point[]::new);
-
         return Math.min(d, stripClosest(strip, d));
     }
 
