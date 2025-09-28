@@ -15,13 +15,12 @@ public class Bench {
             int[] arr = rand.ints(n, -100000, 100000).toArray();
             int k = n / 2;
 
-            // Benchmark DeterministicSelect
             int[] arr1 = Arrays.copyOf(arr, arr.length);
             long start1 = System.nanoTime();
             int res1 = DeterministicSelect.select(arr1, k);
             long end1 = System.nanoTime();
 
-            // Benchmark Arrays.sort
+
             int[] arr2 = Arrays.copyOf(arr, arr.length);
             long start2 = System.nanoTime();
             Arrays.sort(arr2);

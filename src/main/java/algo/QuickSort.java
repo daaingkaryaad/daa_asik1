@@ -6,7 +6,7 @@ public class QuickSort {
     private static final Random rand = new Random();
 
     public static void sort(int[] arr) {
-        if (arr == null || arr.length <= 1) return; // guard tiny/empty arrays
+        if (arr == null || arr.length <= 1) return;
         Metrics.reset();
         long start = System.nanoTime();
 
@@ -41,7 +41,7 @@ public class QuickSort {
         int i = left;
         for (int j = left; j < right; j++) {
             Metrics.compare();
-            if (arr[j] <= pivot) { // allow duplicates safely
+            if (arr[j] <= pivot) {
                 Util.swap(arr, i, j);
                 i++;
             }
