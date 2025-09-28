@@ -59,11 +59,22 @@ All algorithms are instrumented with `Metrics` (comparisons, recursion depth, ru
 2. For n = 1000, ~2000 comparisons (≈ 2n), showing linear growth. 
 3. For n = 10000, ~20,000 comparisons, which matches Θ(n).
 
+### C. QuickSort Results
+
+#### Runtime vs Input Size
+![QuickSort Runtime](images/quicksort_time.png)
+
+1. For very small n, runtime is almost zero because the array is tiny.
+2. For n = 1000 and above, runtime grows close to Θ(n log n), as expected.
+3. Randomized pivot keeps recursion depth ≈ log₂(n), preventing worst-case behavior.
+4. Performance fluctuates slightly run-to-run, since pivot choice is randomized, but the average matches theory.
+
+
 ---
 
 ## 5.Summary
 1. Theory matches practice within constant factors. 
-2. Deterministic Select grows linearly, but `Arrays.sort` often faster for small ngit add images/mergesort_time.png README.md
+2. Deterministic Select grows linearly, but `Arrays.sort` often faster for small n
 3. Closest Pair verified against O(n²) brute force for small n, matched outputs.
 
 ---
