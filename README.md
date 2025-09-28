@@ -41,7 +41,7 @@ All algorithms are instrumented with `Metrics` (comparisons, recursion depth, ru
 2. **Depth vs n**: QuickSort recursion depth matched ~2*log₂n
 3. **Constant factors**: MergeSort slightly slower for small n due to buffer copy; QuickSort faster in practice due to cache
 
-### MergeSort Results
+### A. MergeSort Results
 
 #### Runtime vs Input Size
 ![MergeSort Runtime](images/mergesort_time.png)
@@ -49,6 +49,15 @@ All algorithms are instrumented with `Metrics` (comparisons, recursion depth, ru
 1. Input size (n) was varied from small (6) to larger (1000).
 2. Runtime grows roughly like Θ(n log n).
 3. For very small n, runtime is almost zero (cutoff → insertion sort).
+
+### B. Deterministic Select Results
+
+#### Comparisons vs Input Size
+![Select Comparisons](images/select_comparisons.png)
+
+1. For very small n (like 5), only ~4 comparisons are needed. 
+2. For n = 1000, ~2000 comparisons (≈ 2n), showing linear growth. 
+3. For n = 10000, ~20,000 comparisons, which matches Θ(n).
 
 ---
 
